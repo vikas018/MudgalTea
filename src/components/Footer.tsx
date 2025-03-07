@@ -12,7 +12,7 @@ export default function Footer() {
               Bringing the finest Indian teas directly from gardens to your cup since 2024.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
