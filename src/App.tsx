@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import IntroSection from './components/Body/IntroSection';
-// import FeaturedProducts from './components/FeaturedProducts';
-// import Team from './components/Team';
+import FeaturedProducts from './components/Body/FeaturedProducts';
+import Team from './components/Body/Team';
 // import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 
@@ -16,9 +16,9 @@ const App = () => {
             <Route path="/" element={
               <>
                 <IntroSection />
-                {/* <FeaturedProducts />
+                <FeaturedProducts />
                 <Team />
-                <Testimonials /> */}
+                {/* <Testimonials /> */}
               </>
             } />
             {/* Other routes will be added later */}
