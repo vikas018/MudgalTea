@@ -1,24 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
-// import Hero from './components/Hero';
-// import FeaturedProducts from './components/FeaturedProducts';
-// import Team from './components/Team';
+import IntroSection from './components/Body/IntroSection';
+import FeaturedProducts from './components/Body/FeaturedProducts';
+import Team from './components/Body/Team';
 // import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={
               <>
-                {/* <Hero />
+                <IntroSection />
                 <FeaturedProducts />
                 <Team />
-                <Testimonials /> */}
+                {/* <Testimonials /> */}
               </>
             } />
             {/* Other routes will be added later */}
@@ -26,7 +26,7 @@ const App = () => {
         </main>
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

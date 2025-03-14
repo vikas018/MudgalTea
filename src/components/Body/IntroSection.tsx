@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Hero() {
+export default function IntroSection() {
   return (
     <div className="relative h-[80vh]">
       <div 
