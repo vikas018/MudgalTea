@@ -12,7 +12,7 @@ export default () => {
           combining centuries of tradition with modern expertise.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {teamMembers.map((member) => (
             <div key={member.name} className="text-center">
               <div className="relative mb-4">

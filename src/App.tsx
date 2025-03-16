@@ -3,7 +3,7 @@ import Navbar from './components/NavBar';
 import IntroSection from './components/Body/IntroSection';
 import FeaturedProducts from './components/Body/FeaturedProducts';
 import Team from './components/Body/Team';
-// import Testimonials from './components/Testimonials';
+import Testimonials from './components/Body/Testimonials';
 import Footer from './components/Footer';
 
 const App = () => {
@@ -18,10 +18,9 @@ const App = () => {
                 <IntroSection />
                 <FeaturedProducts />
                 <Team />
-                {/* <Testimonials /> */}
+                <Testimonials />
               </>
             } />
-            {/* Other routes will be added later */}
           </Routes>
         </main>
         <Footer />

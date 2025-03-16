@@ -4,7 +4,7 @@ import dheeraj from '../images/dheeraj.jpg';
 export const teamMembers = [
   {
     name: 'Dheeraj Sharma',
-    role: 'Chief executive officer',
+    role: 'Chief Executive Officer',
     image: dheeraj,
     bio: 'With over 12 years of experience in tea cultivation and tasting, Dheeraj brings his passion for Indian teas to every cup.'
   },
