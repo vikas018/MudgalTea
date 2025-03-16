@@ -9,22 +9,22 @@ interface iProduct {
   price: number
 }
 
-const Product = ({ product }: {product: iProduct}) => (
-  <div key={product.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+const Product = ({ id, image, name, description, price }: iProduct) => (
+  <div key={id} className="bg-white rounded-lg shadow-lg overflow-hidden">
     <img
-      src={product.image}
-      alt={product.name}
+      src={image}
+      alt={name}
       className="w-full h-48 object-cover"
     />
     <div className="p-6">
       <h3 className="text-xl font-semibold text-amber-900 mb-2">
-        {product.name}
+        {name}
       </h3>
-      <p className="text-gray-600 mb-4">{product.description}</p>
+      <p className="text-gray-600 mb-4">{description}</p>
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-amber-800">{product.price}</span>
+        <span className="text-lg font-bold text-amber-800">{price}</span>
         <Link
-          to={`/shop/${product.id}`}
+          to={`/shop/${id}`}
           className="bg-amber-800 text-white px-4 py-2 rounded hover:bg-amber-700 transition duration-300"
         >
           View Details
@@ -41,9 +41,8 @@ export default () => {
         <h2 className="text-3xl font-serif text-center text-amber-900 mb-12">
           Featured Collections
         </h2>
-        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {products.map((product) => <Product {...{ product }}/>)}
+          {products.map((product) => <Product key={product.id} {...product} />)}
         </div>
       </div>
     </section>
