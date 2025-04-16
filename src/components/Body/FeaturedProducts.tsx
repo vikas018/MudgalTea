@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { products } from '../../data/featuredProductdata';
 
 interface iProduct {
@@ -9,30 +9,36 @@ interface iProduct {
   price: number
 }
 
-const Product = ({ id, image, name, description, price }: iProduct) => (
-  <div key={id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-    <img
-      src={image}
-      alt={name}
-      className="w-full h-48 object-cover"
-    />
-    <div className="p-6">
-      <h3 className="text-xl font-semibold text-amber-900 mb-2">
-        {name}
-      </h3>
-      <p className="text-gray-600 mb-4">{description}</p>
-      <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-amber-800">{price}</span>
-        <Link
-          to={`/shop/${id}`}
-          className="bg-amber-800 text-white px-4 py-2 rounded hover:bg-amber-700 transition duration-300"
-        >
-          View Details
-        </Link>
+const Product = ({ id, image, name, description, price }: iProduct) => {
+  const navigate = useNavigate();
+
+  const viewDetailHanlder = (id: number) => navigate(`/shop/${id}`);
+
+  return (
+    <div key={id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img
+        src={image}
+        alt={name}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-amber-900 mb-2">
+          {name}
+        </h3>
+        <p className="text-gray-600 mb-4">{description}</p>
+        <div className="flex items-center justify-between">
+          <span className="text-lg font-bold text-amber-800">{price}</span>
+          <button
+            onClick={() => viewDetailHanlder(id)}
+            className="bg-amber-800 text-white px-4 py-2 rounded hover:bg-amber-700 transition duration-300"
+          >
+            View Details
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  )
+};
 
 export default () => {
   return (
