@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import { products, fromPriceLabel } from '../data/featuredProductdata';
+import Seo from '../components/Seo';
 
 const Shop = () => {
   return (
     <section className="py-20 md:py-24 bg-cream min-h-[60vh]">
+      <Seo
+        title="Shop Loose-Leaf Teas — Mudgal Tea, Meerut"
+        description="Browse Mudgal Tea's loose-leaf teas: Darjeeling First Flush, Special Masala and Green Tea. Order on WhatsApp or pick up in Meerut."
+        path="/shop"
+      />
       <div className="container-page">
         <div className="text-center mb-14">
           <span className="eyebrow">The collection</span>

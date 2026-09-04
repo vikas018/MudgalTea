@@ -4,6 +4,7 @@ import Title from './Title';
 import HeaderNavLink from './HeaderNavLink';
 import HamburgerMenu from './HamburgerMenu';
 import { telLink, business } from '../../data/business';
+import { trackEvent } from '../../lib/analytics';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -18,6 +19,7 @@ const Navbar = () => {
           <div className="flex items-center md:hidden">
             <a
               href={telLink()}
+              onClick={() => trackEvent('Call', { location: 'header' })}
               aria-label={`Call ${business.name}`}
               className="p-2 rounded hover:text-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200"
             >

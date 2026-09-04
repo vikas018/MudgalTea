@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { findProduct, detailImage } from '../data/featuredProductdata';
 import WhatsAppOrderButton from '../components/WhatsAppOrderButton';
+import Seo from '../components/Seo';
+import { ProductJsonLd } from '../components/JsonLd';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -24,6 +26,14 @@ const ProductDetail = () => {
 
   return (
     <section className="py-16 md:py-20 min-h-[60vh] bg-cream">
+      <Seo
+        title={`${product.name} — Mudgal Tea, Meerut`}
+        description={product.description}
+        path={`/shop/${product.id}`}
+        image={detailImage(product)}
+        type="product"
+      />
+      <ProductJsonLd product={product} />
       <div className="container-page max-w-5xl">
         <Link to="/shop" className="text-amber-800 hover:text-amber-600 text-sm">
           ← Back to shop

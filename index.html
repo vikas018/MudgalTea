@@ -4,7 +4,30 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mudgal Tea - Premium Indian Teas</title>
+    <title>Mudgal Tea — Premium Loose-Leaf Tea Shop in Meerut</title>
+    <meta
+      name="description"
+      content="Mudgal Tea is a tea & coffee shop in Meerut offering premium loose-leaf Indian teas — Darjeeling, masala chai and green tea. Order on WhatsApp or visit us at Subhash Market."
+    />
+    <!--
+      SPA fallback decoder (pairs with public/404.html). Converts the ?/-encoded path
+      that 404.html produced back into a clean URL before the router boots.
+    -->
+    <script type="text/javascript">
+      (function () {
+        var l = window.location;
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })();
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Preload the hero image. Must stay identical to HERO_IMAGE_URL in src/data/images.ts. -->
     <link

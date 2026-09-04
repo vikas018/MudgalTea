@@ -1,10 +1,16 @@
 import { business, telLink, mailLink } from '../data/business';
 import EnquiryForm from '../components/EnquiryForm';
 import VisitUs from '../components/VisitUs';
+import Seo from '../components/Seo';
 
 const Contact = () => {
   return (
     <>
+      <Seo
+        title="Contact & Visit — Mudgal Tea, Meerut"
+        description="Call, WhatsApp, or visit Mudgal Tea at Shop 07, Subhash Market, Meerut. Send an enquiry or get directions."
+        path="/contact"
+      />
       <section className="py-20 md:py-24 bg-cream">
         <div className="container-page max-w-3xl">
           <span className="eyebrow">Say hello</span>

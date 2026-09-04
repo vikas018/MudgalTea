@@ -1,8 +1,14 @@
 import { business } from '../data/business';
+import Seo from '../components/Seo';
 
 const About = () => {
   return (
     <section className="py-20 md:py-24 min-h-[60vh] bg-cream">
+      <Seo
+        title="Our Story — Mudgal Tea, Meerut"
+        description="How Mudgal Tea sources and selects premium Indian teas, from the gardens to your cup in Meerut."
+        path="/about"
+      />
       <div className="container-page max-w-3xl">
         <span className="eyebrow">Our story</span>
         <h1 className="section-heading mt-3 mb-8">From the gardens to your cup</h1>
