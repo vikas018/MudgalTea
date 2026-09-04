@@ -1,32 +1,34 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/NavBar';
-import IntroSection from './components/Body/IntroSection';
-import FeaturedProducts from './components/Body/FeaturedProducts';
-import Team from './components/Body/Team';
-import Testimonials from './components/Body/Testimonials';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import ProductDetail from './pages/ProductDetail';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
     <HashRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={
-              <>
-                <IntroSection />
-                <FeaturedProducts />
-                <Team />
-                <Testimonials />
-              </>
-            } />
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/shop/:id" element={<ProductDetail />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
       </div>
     </HashRouter>
   );
-}
+};
 
 export default App;

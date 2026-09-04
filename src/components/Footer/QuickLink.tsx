@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom';
 
-export default () => (
+// Blog intentionally omitted — see brief 1.1. Add it back only when posts exist.
+const links = [
+  { to: '/shop', label: 'Shop' },
+  { to: '/about', label: 'About Us' },
+  { to: '/contact', label: 'Contact' },
+];
+
+const QuickLink = () => (
   <div>
     <h4 className="font-semibold mb-4">Quick Links</h4>
     <ul className="space-y-2">
-      <li><Link to="/shop" className="hover:text-amber-200">Shop</Link></li>
-      <li><Link to="/about" className="hover:text-amber-200">About Us</Link></li>
-      <li><Link to="/blog" className="hover:text-amber-200">Blog</Link></li>
-      <li><Link to="/contact" className="hover:text-amber-200">Contact</Link></li>
+      {links.map((link) => (
+        <li key={link.to}>
+          <Link
+            to={link.to}
+            className="hover:text-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 rounded"
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
     </ul>
   </div>
 );
+
+export default QuickLink;

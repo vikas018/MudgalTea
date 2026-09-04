@@ -2,10 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mudgal Tea - Premium Indian Teas</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Preload the hero image. Must stay identical to HERO_IMAGE_URL in src/data/images.ts. -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=1600&q=70&fm=webp"
+      fetchpriority="high"
+    />
   </head>
   <body>
     <div id="root"></div>

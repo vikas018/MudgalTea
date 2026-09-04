@@ -1,31 +1,30 @@
 import { Link } from 'react-router-dom';
-import { products } from '../../data/featuredProductdata';
+import { products, fromPriceLabel } from '../../data/featuredProductdata';
+import type { Product } from '../../data/types';
 
-interface iProduct {
-  id: number,
-  name: string,
-  image: string,
-  description: string,
-  price: number
+interface ProductCardProps {
+  product: Product;
 }
 
-const Product = ({ id, image, name, description, price }: iProduct) => (
-  <div key={id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+const ProductCard = ({ product }: ProductCardProps) => (
+  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
     <img
-      src={image}
-      alt={name}
+      src={product.image}
+      alt={product.name}
+      width={800}
+      height={192}
+      loading="lazy"
+      decoding="async"
       className="w-full h-48 object-cover"
     />
     <div className="p-6">
-      <h3 className="text-xl font-semibold text-amber-900 mb-2">
-        {name}
-      </h3>
-      <p className="text-gray-600 mb-4">{description}</p>
+      <h3 className="text-xl font-semibold text-amber-900 mb-2">{product.name}</h3>
+      <p className="text-gray-600 mb-4">{product.description}</p>
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-amber-800">{price}</span>
+        <span className="text-lg font-bold text-amber-800">{fromPriceLabel(product)}</span>
         <Link
-          to={`/shop/${id}`}
-          className="bg-amber-800 text-white px-4 py-2 rounded hover:bg-amber-700 transition duration-300"
+          to={`/shop/${product.id}`}
+          className="bg-amber-800 text-white px-4 py-2 rounded hover:bg-amber-700 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
         >
           View Details
         </Link>
@@ -34,7 +33,7 @@ const Product = ({ id, image, name, description, price }: iProduct) => (
   </div>
 );
 
-export default () => {
+const FeaturedProducts = () => {
   return (
     <section className="py-16 bg-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,9 +41,13 @@ export default () => {
           Featured Collections
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {products.map((product) => <Product key={product.id} {...product} />)}
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default FeaturedProducts;
