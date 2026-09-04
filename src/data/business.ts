@@ -36,11 +36,52 @@ export const business = {
       href: 'https://www.instagram.com/mudgal_tea_coffee/',
     },
   ] as SocialLink[],
+
+  // Statutory registration numbers, shown in the footer only when non-empty.
+  // TODO(vikas): add the GST number if registered (else leave '').
+  // TODO(vikas): add the FSSAI license number if applicable (else leave '').
+  //   Verify the current requirement for this business type before publishing.
+  registrations: {
+    gst: '',
+    fssai: '',
+  },
 };
 
 export const telLink = () => `tel:+${business.phoneDigits}`;
 export const mailLink = () => `mailto:${business.email}`;
 
-// Full one-line address, handy for schema markup and "Get Directions".
+// Full one-line address, handy for schema markup, maps, and "Get Directions".
 export const addressLine = () =>
   `${business.address.line1}, ${business.address.city}, ${business.address.state} ${business.address.postalCode}`;
+
+// wa.me expects digits only, including country code, no '+'.
+export const whatsappLink = (message: string) =>
+  `https://wa.me/${business.phoneDigits}?text=${encodeURIComponent(message)}`;
+
+// Google Maps embed + directions from the address (no API key needed).
+export const mapEmbedUrl = () =>
+  `https://maps.google.com/maps?q=${encodeURIComponent(addressLine())}&output=embed`;
+
+export const directionsUrl = () =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addressLine())}`;
+
+// --- Opening hours -----------------------------------------------------------
+export interface OpeningHours {
+  day: string;
+  opens: string; // "HH:MM" 24h
+  closes: string; // "HH:MM" 24h
+}
+
+// TODO(vikas): confirm the real opening hours per day, then set
+// openingHoursConfirmed = true so the table renders. Placeholder values below.
+export const openingHoursConfirmed = false;
+
+export const openingHours: OpeningHours[] = [
+  { day: 'Monday', opens: '09:00', closes: '21:00' },
+  { day: 'Tuesday', opens: '09:00', closes: '21:00' },
+  { day: 'Wednesday', opens: '09:00', closes: '21:00' },
+  { day: 'Thursday', opens: '09:00', closes: '21:00' },
+  { day: 'Friday', opens: '09:00', closes: '21:00' },
+  { day: 'Saturday', opens: '09:00', closes: '21:00' },
+  { day: 'Sunday', opens: '09:00', closes: '21:00' },
+];

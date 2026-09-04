@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { products, fromPriceLabel } from '../../data/featuredProductdata';
+import { products, fromPriceLabel, cheapestVariant } from '../../data/featuredProductdata';
 import type { Product } from '../../data/types';
+import WhatsAppOrderButton from '../WhatsAppOrderButton';
 
 interface ProductCardProps {
   product: Product;
@@ -20,7 +21,7 @@ const ProductCard = ({ product }: ProductCardProps) => (
     <div className="p-6">
       <h3 className="text-xl font-semibold text-amber-900 mb-2">{product.name}</h3>
       <p className="text-gray-600 mb-4">{product.description}</p>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-4">
         <span className="text-lg font-bold text-amber-800">{fromPriceLabel(product)}</span>
         <Link
           to={`/shop/${product.id}`}
@@ -29,6 +30,11 @@ const ProductCard = ({ product }: ProductCardProps) => (
           View Details
         </Link>
       </div>
+      <WhatsAppOrderButton
+        productName={product.name}
+        variant={cheapestVariant(product)}
+        className="w-full"
+      />
     </div>
   </div>
 );

@@ -22,6 +22,15 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-amber-800 mt-8 pt-8 text-center text-sm">
+          {/* TODO(vikas): add GST / FSSAI numbers in data/business.ts (verify the requirement
+              for this business type). They appear here automatically once set. */}
+          {(business.registrations.gst || business.registrations.fssai) && (
+            <p className="text-amber-100 mb-2">
+              {business.registrations.gst && <>GST: {business.registrations.gst}</>}
+              {business.registrations.gst && business.registrations.fssai && ' · '}
+              {business.registrations.fssai && <>FSSAI: {business.registrations.fssai}</>}
+            </p>
+          )}
           <p>
             © {year} {business.name}. All rights reserved.
           </p>

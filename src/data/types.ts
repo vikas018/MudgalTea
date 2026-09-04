@@ -5,12 +5,21 @@ export interface ProductVariant {
   priceInr: number;
 }
 
+export interface BrewingGuide {
+  waterTempC: number;
+  gramsPerCup: number;
+  steepMinutes: number;
+}
+
 export interface Product {
   id: number;
   name: string;
   description: string;
   image: string;
   variants: ProductVariant[];
+  // Optional trust content — rendered on the detail page when present.
+  brewing?: BrewingGuide;
+  packContents?: string;
 }
 
 export interface Testimonial {

@@ -1,8 +1,11 @@
-import type { Product } from './types';
+import type { Product, ProductVariant } from './types';
 
 // Image URLs carry explicit sizing so the CDN returns right-sized WebP:
 //   cards w=800, detail w=1200 (the detail page requests its own size).
 // TODO(vikas): confirm the weight/price variants below — placeholders where noted.
+// TODO(vikas): add per-product `brewing` ({ waterTempC, gramsPerCup, steepMinutes })
+//   and `packContents` (what's actually in the pack). Left off deliberately rather than
+//   guessed; the detail page shows "coming soon" until they're filled in.
 
 export const products: Product[] = [
   {
@@ -40,9 +43,12 @@ export const products: Product[] = [
 export const findProduct = (id: number): Product | undefined =>
   products.find((p) => p.id === id);
 
+export const cheapestVariant = (product: Product): ProductVariant =>
+  product.variants.reduce((a, b) => (b.priceInr < a.priceInr ? b : a));
+
 // "₹80 · 100 g" for the cheapest variant, used on cards.
 export const fromPriceLabel = (product: Product): string => {
-  const cheapest = product.variants.reduce((a, b) => (b.priceInr < a.priceInr ? b : a));
+  const cheapest = cheapestVariant(product);
   return `₹${cheapest.priceInr} · ${cheapest.weightGrams} g`;
 };
 

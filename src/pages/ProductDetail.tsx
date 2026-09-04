@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
-import { findProduct, detailImage, variantLabel } from '../data/featuredProductdata';
+import { findProduct, detailImage } from '../data/featuredProductdata';
+import WhatsAppOrderButton from '../components/WhatsAppOrderButton';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -49,27 +50,46 @@ const ProductDetail = () => {
             <h2 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-3">
               Pack sizes
             </h2>
-            <ul className="space-y-2 mb-8">
+            <ul className="space-y-3 mb-8">
               {product.variants.map((v) => (
                 <li
                   key={v.weightGrams}
-                  className="flex items-center justify-between border-b border-amber-100 pb-2"
+                  className="flex items-center justify-between gap-4 border-b border-amber-100 pb-3"
                 >
-                  <span className="text-gray-700">{v.weightGrams} g</span>
-                  <span className="font-bold text-amber-800">₹{v.priceInr}</span>
+                  <span className="text-gray-700">
+                    {v.weightGrams} g · <span className="font-bold text-amber-800">₹{v.priceInr}</span>
+                  </span>
+                  <WhatsAppOrderButton productName={product.name} variant={v} />
                 </li>
               ))}
             </ul>
 
-            {/* TODO(vikas): brewing guide (water temp, quantity, steep time),
-                garden / sourcing story, and what's in the pack — these come in Phase 2.4. */}
-            <p className="text-sm text-gray-500 italic">
-              Brewing guide and sourcing details coming soon.
-            </p>
+            {product.brewing ? (
+              <div className="mb-6">
+                <h2 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-2">
+                  How to brew
+                </h2>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li>Water: {product.brewing.waterTempC}°C</li>
+                  <li>Tea: {product.brewing.gramsPerCup} g per cup</li>
+                  <li>Steep: {product.brewing.steepMinutes} min</li>
+                </ul>
+              </div>
+            ) : (
+              // TODO(vikas): add per-tea brewing guide (water temp, grams/cup, steep time)
+              // in src/data/featuredProductdata.ts to replace this line.
+              <p className="text-sm text-gray-500 italic mb-6">Brewing guide coming soon.</p>
+            )}
 
-            <p className="mt-6 text-xs text-gray-400">
-              Example price: {variantLabel(product.variants[0])}
-            </p>
+            {product.packContents ? (
+              <p className="text-sm text-gray-700">
+                <span className="font-semibold text-amber-900">In the pack: </span>
+                {product.packContents}
+              </p>
+            ) : (
+              // TODO(vikas): describe what's in the pack (loose leaf, whole spices, etc.).
+              <p className="text-sm text-gray-500 italic">Pack details coming soon.</p>
+            )}
           </div>
         </div>
       </div>
