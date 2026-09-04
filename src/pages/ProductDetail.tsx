@@ -8,17 +8,14 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <section className="py-24 min-h-[60vh]">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h1 className="text-3xl font-serif text-amber-900 mb-4">Product not found</h1>
-          <p className="text-gray-600 mb-8">
+      <section className="py-24 min-h-[60vh] bg-cream">
+        <div className="container-page max-w-3xl text-center">
+          <h1 className="section-heading mb-4">Product not found</h1>
+          <p className="text-ink-soft mb-8">
             We couldn't find that tea. It may have moved or sold out.
           </p>
-          <Link
-            to="/shop"
-            className="bg-amber-800 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
-          >
-            Back to Shop
+          <Link to="/shop" className="btn-primary">
+            Back to shop
           </Link>
         </div>
       </section>
@@ -26,13 +23,13 @@ const ProductDetail = () => {
   }
 
   return (
-    <section className="py-16 min-h-[60vh]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-20 min-h-[60vh] bg-cream">
+      <div className="container-page max-w-5xl">
         <Link to="/shop" className="text-amber-800 hover:text-amber-600 text-sm">
-          ← Back to Shop
+          ← Back to shop
         </Link>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 mt-6">
           <img
             src={detailImage(product)}
             alt={product.name}
@@ -40,12 +37,14 @@ const ProductDetail = () => {
             height={800}
             loading="lazy"
             decoding="async"
-            className="w-full rounded-lg shadow-lg object-cover"
+            className="w-full rounded-2xl shadow-card ring-1 ring-ink/5 object-cover"
           />
 
           <div>
-            <h1 className="text-3xl font-serif text-amber-900 mb-3">{product.name}</h1>
-            <p className="text-gray-600 mb-6">{product.description}</p>
+            <h1 className="font-serif text-3xl md:text-4xl text-amber-900 mb-3 tracking-tight">
+              {product.name}
+            </h1>
+            <p className="text-ink-soft mb-8 leading-relaxed">{product.description}</p>
 
             <h2 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-3">
               Pack sizes

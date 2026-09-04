@@ -10,8 +10,8 @@ const Navbar = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="bg-amber-900 text-amber-50">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
+    <header className="sticky top-0 z-30 bg-amber-900/95 backdrop-blur text-cream shadow-sm">
+      <nav className="container-page" aria-label="Main">
         <div className="flex items-center justify-between h-16">
           <Title />
           {!isMenuOpen && <HeaderNavLink isMenuOpen={isMenuOpen} onNavigate={closeMenu} />}

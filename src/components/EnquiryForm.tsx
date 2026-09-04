@@ -13,7 +13,7 @@ const isValidIndianMobile = (raw: string): boolean => {
 };
 
 const inputClass =
-  'w-full border border-amber-200 rounded px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500';
+  'w-full bg-white border border-cream-200 rounded-xl px-4 py-2.5 text-ink placeholder:text-ink-soft/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500';
 
 const EnquiryForm = () => {
   const [status, setStatus] = useState<Status>('idle');
@@ -153,11 +153,7 @@ const EnquiryForm = () => {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === 'submitting'}
-        className="bg-amber-800 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-300 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
-      >
+      <button type="submit" disabled={status === 'submitting'} className="btn-primary disabled:opacity-60">
         {status === 'submitting' ? 'Sending…' : 'Send enquiry'}
       </button>
     </form>

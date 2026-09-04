@@ -7,12 +7,12 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-amber-900 text-amber-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-amber-900 text-cream">
+      <div className="container-page py-14">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
-            <h3 className="font-serif text-xl mb-4">{business.name}</h3>
-            <p className="text-sm text-amber-100">
+            <h3 className="font-serif text-2xl mb-4">{business.name}</h3>
+            <p className="text-sm text-cream/75 leading-relaxed">
               Bringing the finest Indian teas directly from gardens to your cup.
             </p>
           </div>

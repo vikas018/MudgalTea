@@ -15,10 +15,13 @@ interface VisitUsProps {
 
 const VisitUs = ({ heading = true }: VisitUsProps) => {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-28 bg-white">
+      <div className="container-page">
         {heading && (
-          <h2 className="text-3xl font-serif text-center text-amber-900 mb-12">Visit Us</h2>
+          <div className="text-center mb-14">
+            <span className="eyebrow">Come by</span>
+            <h2 className="section-heading mt-3">Visit us in Meerut</h2>
+          </div>
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -33,10 +36,10 @@ const VisitUs = ({ heading = true }: VisitUsProps) => {
               href={directionsUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-amber-800 text-white px-4 py-2 rounded hover:bg-amber-700 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+              className="btn-primary"
             >
               <Navigation className="h-4 w-4" aria-hidden="true" />
-              Get Directions
+              Get directions
             </a>
 
             <h3 className="font-semibold text-amber-900 mt-8 mb-2">Opening hours</h3>
@@ -60,7 +63,7 @@ const VisitUs = ({ heading = true }: VisitUsProps) => {
             )}
           </div>
 
-          <div className="w-full h-72 md:h-full min-h-[18rem] rounded-lg overflow-hidden shadow">
+          <div className="w-full h-72 md:h-full min-h-[20rem] rounded-2xl overflow-hidden shadow-card ring-1 ring-ink/5">
             {/* Lazy-loaded so it costs nothing on first paint. */}
             <iframe
               title={`Map to ${business.name}`}
