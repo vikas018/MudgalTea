@@ -8,7 +8,7 @@ export const basePath = '/MudgalTea/';
 
 export const defaultTitle = 'Mudgal Tea — Premium Loose-Leaf Tea Shop in Meerut';
 export const defaultDescription =
-  'Mudgal Tea is a tea & coffee shop in Meerut offering premium loose-leaf Indian teas — Darjeeling, masala chai and green tea. Order on WhatsApp or visit us at Subhash Market.';
+  'Mudgal Tea is a tea & coffee shop in Meerut offering premium loose-leaf teas and blends — Kailash BP, Hotel Blend, green tea and tea masala. Order on WhatsApp or visit us at Subhash Market.';
 
 // Default share image: a 1200x630 crop of the hero (real raster JPG, previews on WhatsApp).
 // TODO(vikas): optionally replace with a branded 1200x630 image (logo + name) in public/.

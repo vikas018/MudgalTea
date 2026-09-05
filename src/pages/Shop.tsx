@@ -7,7 +7,7 @@ const Shop = () => {
     <section className="py-20 md:py-24 bg-cream min-h-[60vh]">
       <Seo
         title="Shop Loose-Leaf Teas — Mudgal Tea, Meerut"
-        description="Browse Mudgal Tea's loose-leaf teas: Darjeeling First Flush, Special Masala and Green Tea. Order on WhatsApp or pick up in Meerut."
+        description="Browse Mudgal Tea's teas and blends: Kailash BP, Hotel Blend, Green Tea and Tea Masala. Order on WhatsApp or pick up in Meerut."
         path="/shop"
       />
       <div className="container-page">

@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react';
 import { whatsappLink } from '../data/business';
+import { formatWeight } from '../data/featuredProductdata';
 import { trackEvent } from '../lib/analytics';
 import type { ProductVariant } from '../data/types';
 
@@ -12,7 +13,7 @@ interface WhatsAppOrderButtonProps {
 // lucide-react carries no WhatsApp brand mark, and the brief limits icons to lucide,
 // so MessageCircle stands in for the WhatsApp glyph.
 const WhatsAppOrderButton = ({ productName, variant, className = '' }: WhatsAppOrderButtonProps) => {
-  const message = `Hi Mudgal Tea, I'd like to order: ${productName} (${variant.weightGrams} g) — ₹${variant.priceInr}`;
+  const message = `Hi Mudgal Tea, I'd like to order: ${productName} (${formatWeight(variant.weightGrams)}) — ₹${variant.priceInr}`;
 
   return (
     <a

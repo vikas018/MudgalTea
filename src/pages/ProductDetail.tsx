@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { findProduct, detailImage } from '../data/featuredProductdata';
+import { findProduct, detailImage, formatWeight } from '../data/featuredProductdata';
 import WhatsAppOrderButton from '../components/WhatsAppOrderButton';
 import Seo from '../components/Seo';
 import { ProductJsonLd } from '../components/JsonLd';
@@ -66,7 +66,8 @@ const ProductDetail = () => {
                   className="flex items-center justify-between gap-4 border-b border-amber-100 pb-3"
                 >
                   <span className="text-gray-700">
-                    {v.weightGrams} g · <span className="font-bold text-amber-800">₹{v.priceInr}</span>
+                    {formatWeight(v.weightGrams)} ·{' '}
+                    <span className="font-bold text-amber-800">₹{v.priceInr}</span>
                   </span>
                   <WhatsAppOrderButton productName={product.name} variant={v} />
                 </li>
