@@ -4,6 +4,7 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import VisitorIntro from './components/VisitorIntro';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
@@ -35,6 +36,7 @@ const App = () => {
         </main>
         <Footer />
         <FloatingWhatsApp />
+        <VisitorIntro />
       </div>
     </BrowserRouter>
   );
