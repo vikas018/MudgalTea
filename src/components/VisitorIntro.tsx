@@ -1,6 +1,9 @@
 import { useEffect, useState, type MouseEvent } from 'react';
 import { X, MessageCircle } from 'lucide-react';
 import { whatsappLink, business } from '../data/business';
+
+// Visitor leads go to the dedicated leads WhatsApp number, not the public one.
+const leadDigits = business.leadsPhoneDigits;
 import { trackEvent } from '../lib/analytics';
 
 // Shown once per visitor, a few seconds after landing. Dismissible — never a hard gate.
@@ -8,11 +11,11 @@ import { trackEvent } from '../lib/analytics';
 // the visitor taps send (a site cannot message the shop's WhatsApp on its own).
 
 const STORAGE_KEY = 'mudgal_visitor_intro';
-const SHOW_AFTER_MS = 8000;
+// Shown quickly so (almost) every visitor sees it, after the page paints.
+const SHOW_AFTER_MS = 1500;
 
-// Optional phone: only validated if the visitor typed something.
+// Phone is required here; must be a valid Indian mobile.
 const phoneLooksValid = (raw: string): boolean => {
-  if (!raw.trim()) return true;
   const digits = raw.replace(/[\s-]/g, '').replace(/^(\+91|91)/, '');
   return /^[6-9]\d{9}$/.test(digits);
 };
@@ -72,7 +75,7 @@ const VisitorIntro = () => {
     }
     if (!phoneLooksValid(phone)) {
       e.preventDefault();
-      setError('That phone number doesn’t look right — or leave it blank.');
+      setError('Please enter a valid 10-digit mobile number.');
       return;
     }
     // Valid: let the WhatsApp link open, record and close.
@@ -132,7 +135,7 @@ const VisitorIntro = () => {
           </div>
           <div>
             <label htmlFor="vi-phone" className="block text-sm font-medium text-amber-900 mb-1">
-              Phone <span className="text-ink-soft font-normal">(optional)</span>
+              Phone
             </label>
             <input
               id="vi-phone"
@@ -153,7 +156,7 @@ const VisitorIntro = () => {
 
         <div className="mt-5 flex items-center gap-3">
           <a
-            href={whatsappLink(message)}
+            href={whatsappLink(message, leadDigits)}
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleSend}

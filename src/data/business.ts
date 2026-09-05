@@ -11,6 +11,10 @@ export interface SocialLink {
 // Digits only, with country code, no spaces or symbols — used for tel: and wa.me links.
 const phoneDigits = '919756417585';
 
+// Separate WhatsApp number that receives visitor leads (not shown publicly).
+// TODO(vikas): confirm this is the correct WhatsApp number to receive visitor details.
+const leadsPhoneDigits = '919536800486';
+
 export const business = {
   name: 'Mudgal Tea',
   tagline: 'Premium loose-leaf tea and coffee in Meerut',
@@ -18,6 +22,9 @@ export const business = {
   // Display text (human-readable) kept separate from the machine-readable digits.
   phoneDisplay: '+91 97564 17585',
   phoneDigits,
+
+  // Where "who visited" leads are sent. Public number above stays for orders/contact.
+  leadsPhoneDigits,
 
   email: 'vkyadav018@gmail.com',
 
@@ -55,8 +62,9 @@ export const addressLine = () =>
   `${business.address.line1}, ${business.address.city}, ${business.address.state} ${business.address.postalCode}`;
 
 // wa.me expects digits only, including country code, no '+'.
-export const whatsappLink = (message: string) =>
-  `https://wa.me/${business.phoneDigits}?text=${encodeURIComponent(message)}`;
+// Defaults to the public number; pass digits (e.g. leadsPhoneDigits) to target another.
+export const whatsappLink = (message: string, digits: string = business.phoneDigits) =>
+  `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 
 // Google Maps embed + directions from the address (no API key needed).
 export const mapEmbedUrl = () =>
