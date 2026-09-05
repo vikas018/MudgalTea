@@ -74,23 +74,6 @@ const ProductDetail = () => {
               ))}
             </ul>
 
-            {product.brewing ? (
-              <div className="mb-6">
-                <h2 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-2">
-                  How to brew
-                </h2>
-                <ul className="text-sm text-gray-700 space-y-1">
-                  <li>Water: {product.brewing.waterTempC}°C</li>
-                  <li>Tea: {product.brewing.gramsPerCup} g per cup</li>
-                  <li>Steep: {product.brewing.steepMinutes} min</li>
-                </ul>
-              </div>
-            ) : (
-              // TODO(vikas): add per-tea brewing guide (water temp, grams/cup, steep time)
-              // in src/data/featuredProductdata.ts to replace this line.
-              <p className="text-sm text-gray-500 italic mb-6">Brewing guide coming soon.</p>
-            )}
-
             {product.packContents ? (
               <p className="text-sm text-gray-700">
                 <span className="font-semibold text-amber-900">In the pack: </span>
@@ -102,6 +85,53 @@ const ProductDetail = () => {
             )}
           </div>
         </div>
+
+        {product.recipe && (
+          <div className="card p-7 md:p-10 mt-10 md:mt-14">
+            <span className="eyebrow">For better taste</span>
+            <h2 className="section-heading mt-3 mb-6">
+              How to make it{product.recipe.serves ? ` · ${product.recipe.serves}` : ''}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <div>
+                <h3 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-3">
+                  You'll need
+                </h3>
+                <ul className="space-y-2 text-ink-soft">
+                  {product.recipe.ingredients.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span aria-hidden="true" className="text-amber-500">
+                        •
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-3">
+                  Method
+                </h3>
+                <ol className="space-y-3 text-ink-soft">
+                  {product.recipe.steps.map((step, i) => (
+                    <li key={step} className="flex gap-3">
+                      <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-amber-900 text-cream text-xs font-semibold">
+                        {i + 1}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+            {product.recipe.tip && (
+              <p className="mt-8 text-sm text-amber-900 bg-amber-50 border border-amber-100 rounded-xl px-4 py-3">
+                <span className="font-semibold">Tip: </span>
+                {product.recipe.tip}
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

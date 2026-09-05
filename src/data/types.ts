@@ -11,6 +11,13 @@ export interface BrewingGuide {
   steepMinutes: number;
 }
 
+export interface Recipe {
+  serves?: string; // e.g. "2 cups"
+  ingredients: string[];
+  steps: string[];
+  tip?: string;
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -18,6 +25,7 @@ export interface Product {
   image: string;
   variants: ProductVariant[];
   // Optional trust content — rendered on the detail page when present.
+  recipe?: Recipe;
   brewing?: BrewingGuide;
   packContents?: string;
 }
